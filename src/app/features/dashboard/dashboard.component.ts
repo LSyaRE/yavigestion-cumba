@@ -15,25 +15,25 @@ import { AuthService } from '../../core/services/auth.service';
         
         <div class="role-cards">
           <div class="role-card" (click)="navigate('/admin/dashboard')">
-            <div class="icon">👨‍💼</div>
+            <div class="icon"></div>
             <h3>Administrador</h3>
             <p>Gestión completa del sistema</p>
           </div>
 
           <div class="role-card" (click)="navigate('/coordinator/dashboard')">
-            <div class="icon">👩‍🏫</div>
+            <div class="icon"></div>
             <h3>Coordinador</h3>
             <p>Gestión de estudiantes</p>
           </div>
 
           <div class="role-card" (click)="navigate('/tutor/dashboard')">
-            <div class="icon">👨‍🔬</div>
+            <div class="icon"></div>
             <h3>Tutor</h3>
             <p>Evaluación de estudiantes</p>
           </div>
 
           <div class="role-card" (click)="navigate('/student/dashboard')">
-            <div class="icon">👨‍🎓</div>
+            <div class="icon"></div>
             <h3>Estudiante</h3>
             <p>Mis asignaturas</p>
           </div>
