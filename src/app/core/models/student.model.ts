@@ -18,7 +18,7 @@ export interface StudentSubject {
   tutor?: User;
   enterprise?: Enterprise;
   status: string;
-  period?: AcademicPeriod;  // ← AGREGAR esta propiedad
+  period?: AcademicPeriod;  
 }
 
 export enum SubjectType {
