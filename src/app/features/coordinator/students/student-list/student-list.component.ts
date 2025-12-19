@@ -104,205 +104,220 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
     </div>
   `,
   styles: [`
-    .student-list-container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+/* ================= CONTENEDOR ================= */
+.student-list-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-    .header {
-      margin-bottom: 32px;
+/* ================= HEADER ================= */
+.header {
+  margin-bottom: 32px;
+}
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+.header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
+.header p {
+  color: #6b7280;
+  font-size: 16px;
+  margin: 0;
+}
 
-    .filters-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
+/* ================= FILTROS ================= */
+.filters-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
-    .filters-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+.filters-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-    .filter-select {
-      padding: 10px 16px;
-      border: 1.5px solid #e5e7eb;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      background: white;
-      min-width: 200px;
+.filter-select {
+  padding: 10px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  background: white;
+  min-width: 200px;
+}
 
-      &:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      }
-    }
+.filter-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
 
-    .students-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-    }
+/* ================= GRID ================= */
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
 
-    .student-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s;
+/* ================= CARD ESTUDIANTE ================= */
+.student-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
 
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
-      }
-    }
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.15);
+}
 
-    .student-header {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid #f3f4f6;
+/* ================= HEADER CARD ================= */
+.student-header {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f3f4f6;
+}
 
-      .student-avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 16px;
-        flex-shrink: 0;
-      }
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+}
 
-      .student-info {
-        flex: 1;
+.student-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
 
-        h3 {
-          font-size: 16px;
-          font-weight: 600;
-          color: #1f2937;
-          margin-bottom: 4px;
-        }
+.student-email {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
 
-        .student-email {
-          font-size: 13px;
-          color: #6b7280;
-          margin: 0;
-        }
-      }
-    }
+/* ================= DETALLES ================= */
+.student-details {
+  margin-bottom: 16px;
+}
 
-    .student-details {
-      margin-bottom: 16px;
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
 
-      .detail-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0;
+.detail-row .label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
 
-        .label {
-          font-size: 13px;
-          color: #6b7280;
-          font-weight: 500;
-        }
+.detail-row .value {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
 
-        .value {
-          font-size: 14px;
-          color: #1f2937;
-          font-weight: 600;
-        }
+/* ================= BADGES ================= */
+.badge {
+  padding: 4px 10px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
 
-        .badge {
-          padding: 4px 10px;
-          background: #fee2e2;
-          color: #991b1b;
-          border-radius: 10px;
-          font-size: 12px;
-          font-weight: 600;
+.badge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
 
-          &.active {
-            background: #d1fae5;
-            color: #065f46;
-          }
-        }
-      }
-    }
+/* ================= ACCIONES ================= */
+.student-actions {
+  margin-top: 12px;
+}
 
-    .empty-state, .loading-spinner {
-      text-align: center;
-      padding: 80px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ================= EMPTY & LOADING ================= */
+.empty-state,
+.loading-spinner {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
-      .empty-icon {
-        font-size: 64px;
-        margin-bottom: 20px;
-      }
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
 
-      h3 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 8px;
-      }
+.empty-state h3 {
+  font-size: 20px;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
 
-      p {
-        color: #6b7280;
-        margin: 0;
-      }
+.empty-state p,
+.loading-spinner p {
+  color: #6b7280;
+  margin: 0;
+}
 
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #3b82f6;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 16px;
-      }
-    }
+/* ================= SPINNER ================= */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
-    @media (max-width: 768px) {
-      .students-grid {
-        grid-template-columns: 1fr;
-      }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .students-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .filters-row {
-        flex-direction: column;
+  .filters-row {
+    flex-direction: column;
+  }
 
-        .filter-select {
-          width: 100%;
-        }
-      }
-    }
-  `]
+  .filter-select {
+    width: 100%;
+  }
+}
+`]
+
 })
 export class StudentListComponent implements OnInit {
   private studentService = inject(StudentService);

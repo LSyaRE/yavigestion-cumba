@@ -89,221 +89,245 @@ import { DateFormatPipe } from '../../../../shared/pipes/date-format.pipe';
     </div>
   `,
   styles: [`
-    .period-list {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+/* ================= CONTENEDOR ================= */
+.period-list {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
 
-    .list-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-      gap: 20px;
+/* ================= HEADER ================= */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+.list-header h1 {
+  font-size: 30px;
+  color: #0f172a;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
+.list-header p {
+  color: #475569;
+  font-size: 15px;
+  margin: 0;
+}
 
-    .periods-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 24px;
-    }
+/* ================= GRID ================= */
+.periods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
 
-    .period-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: all 0.3s;
+/* ================= CARD ================= */
+.period-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
 
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      }
-    }
+.period-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.15);
+}
 
-    .period-header {
-      padding: 24px 24px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      border-bottom: 1px solid #f3f4f6;
+/* ================= CARD HEADER ================= */
+.period-header {
+  padding: 22px 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-      h3 {
-        font-size: 20px;
-        color: #1f2937;
-        margin: 0;
-        font-weight: 600;
-        flex: 1;
-      }
+.period-header h3 {
+  font-size: 18px;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 700;
+  flex: 1;
+}
 
-      .period-status {
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 600;
-        background: #f3f4f6;
-        color: #6b7280;
-        white-space: nowrap;
+/* ================= STATUS ================= */
+.period-status {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e5e7eb;
+  color: #475569;
+  white-space: nowrap;
+}
 
-        &.active {
-          background: #d1fae5;
-          color: #065f46;
-        }
-      }
-    }
+.period-status.active {
+  background: #dcfce7;
+  color: #166534;
+}
 
-    .period-body {
-      padding: 20px 24px;
-    }
+/* ================= BODY ================= */
+.period-body {
+  padding: 20px 24px;
+}
 
-    .period-description {
-      color: #6b7280;
-      font-size: 14px;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
+.period-description {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
 
-    .period-dates {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
-      padding: 16px;
-      background: #f9fafb;
-      border-radius: 8px;
-    }
+/* ================= DATES ================= */
+.period-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
 
-    .date-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
+.date-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
 
-      .date-label {
-        color: #6b7280;
-        font-weight: 500;
-      }
+.date-label {
+  color: #64748b;
+  font-weight: 600;
+}
 
-      .date-value {
-        color: #1f2937;
-        font-weight: 600;
-      }
-    }
+.date-value {
+  color: #0f172a;
+  font-weight: 700;
+}
 
-    .period-stats {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+/* ================= STATS ================= */
+.period-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-      .stat-item {
-        font-size: 14px;
-        color: #6b7280;
-      }
-    }
+.stat-item {
+  font-size: 14px;
+  color: #475569;
+  font-weight: 600;
+}
 
-    .period-actions {
-      padding: 16px 24px;
-      background: #f9fafb;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      border-top: 1px solid #e5e7eb;
-    }
+/* ================= ACTIONS ================= */
+.period-actions {
+  padding: 16px 24px;
+  background: #f8fafc;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-top: 1px solid #e5e7eb;
+}
 
-    .empty-state {
-      text-align: center;
-      padding: 80px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ================= EMPTY ================= */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
 
-      .empty-icon {
-        font-size: 64px;
-        margin-bottom: 20px;
-      }
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
 
-      h3 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 8px;
-      }
+.empty-state h3 {
+  font-size: 20px;
+  color: #0f172a;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
-      p {
-        color: #6b7280;
-        margin-bottom: 24px;
-      }
-    }
+.empty-state p {
+  color: #475569;
+  margin-bottom: 24px;
+}
 
-    .loading-spinner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px;
-      background: white;
-      border-radius: 12px;
+/* ================= LOADING ================= */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  background: #ffffff;
+  border-radius: 14px;
+}
 
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #667eea;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
 
-      p {
-        margin-top: 16px;
-        color: #6b7280;
-        font-size: 14px;
-      }
-    }
+.loading-spinner p {
+  margin-top: 16px;
+  color: #475569;
+  font-size: 14px;
+}
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+/* ================= ERROR ================= */
+.error-message {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  border: 1px solid #fecaca;
+  font-weight: 600;
+}
 
-    .error-message {
-      background: #fee2e2;
-      color: #991b1b;
-      padding: 16px 20px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 20px;
-      border: 1px solid #fecaca;
-    }
+/* ================= ANIM ================= */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-    @media (max-width: 768px) {
-      .list-header {
-        flex-direction: column;
-        align-items: stretch;
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-        .btn {
-          width: 100%;
-        }
-      }
+  .list-header .btn {
+    width: 100%;
+  }
 
-      .periods-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  `]
+  .periods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+`]
+
 })
 export class PeriodListComponent implements OnInit {
   private periodService = inject(PeriodService);

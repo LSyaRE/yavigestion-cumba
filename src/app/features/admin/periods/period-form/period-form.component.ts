@@ -127,156 +127,212 @@ import { AcademicPeriod } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    .period-form-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+/* ================= CONTENEDOR ================= */
+.period-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
 
-    .form-header {
-      margin-bottom: 32px;
+/* ================= HEADER ================= */
+.form-header {
+  margin-bottom: 32px;
+}
 
-      .back-link {
-        color: #667eea;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 12px;
-        display: inline-block;
+.back-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: inline-block;
+}
 
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+.back-link:hover {
+  text-decoration: underline;
+}
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+.form-header h1 {
+  font-size: 30px;
+  color: #0f172a;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
+.form-header p {
+  color: #475569;
+  font-size: 15px;
+  margin: 0;
+}
 
-    .period-form {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+/* ================= FORM ================= */
+.period-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-    .form-card {
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ================= CARD ================= */
+.form-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
 
-      h2 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 24px;
-        font-weight: 600;
-        padding-bottom: 16px;
-        border-bottom: 2px solid #f3f4f6;
-      }
-    }
+.form-card h2 {
+  font-size: 20px;
+  color: #0f172a;
+  margin-bottom: 24px;
+  font-weight: 700;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #e5e7eb;
+}
 
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 20px;
+/* ================= GRID ================= */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+.form-row:last-child {
+  margin-bottom: 0;
+}
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
+/* ================= GROUP ================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
 
-      &.full-width {
-        grid-column: 1 / -1;
-      }
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
 
-      label {
-        font-size: 14px;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 8px;
-      }
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
 
-      .form-control {
-        padding: 12px 16px;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: all 0.2s;
-        background-color: #f9fafb;
-        font-family: inherit;
+/* ================= INPUTS ================= */
+.form-control {
+  padding: 12px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
 
-        &:focus {
-          outline: none;
-          border-color: #667eea;
-          background-color: white;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
+.form-control:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
 
-        &.is-invalid {
-          border-color: #ef4444;
-          background-color: #fef2f2;
-        }
+.form-control.is-invalid {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
 
-        &::placeholder {
-          color: #9ca3af;
-        }
-      }
+.form-control::placeholder {
+  color: #9ca3af;
+}
 
-      textarea.form-control {
-        resize: vertical;
-        min-height: 80px;
-        font-family: inherit;
-      }
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
 
-      .invalid-feedback {
-        color: #ef4444;
-        font-size: 13px;
-        margin-top: 6px;
-      }
-    }
+/* ================= VALIDATION ================= */
+.invalid-feedback {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 600;
+}
 
-    .form-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      padding-top: 8px;
-    }
+/* ================= ALERT ================= */
+.alert-danger {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+}
 
-    .loading-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+/* ================= ACTIONS ================= */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
 
-    @media (max-width: 768px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
 
-      .form-actions {
-        flex-direction: column-reverse;
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
 
-        button {
-          width: 100%;
-        }
-      }
-    }
-  `]
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= LOADING ================= */
+.loading-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+`]
+
 })
 export class PeriodFormComponent implements OnInit {
   private fb = inject(FormBuilder);

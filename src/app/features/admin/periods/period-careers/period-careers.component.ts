@@ -179,470 +179,233 @@ import { AcademicPeriod, Career } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    .period-careers-container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .header {
-      margin-bottom: 32px;
-
-      .back-link {
-        color: #667eea;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 16px;
-        display: inline-block;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 20px;
-
-        h1 {
-          font-size: 32px;
-          color: #1f2937;
-          margin-bottom: 8px;
-          font-weight: 700;
-        }
-
-        p {
-          color: #6b7280;
-          font-size: 16px;
-          margin: 0;
-        }
-
-        .period-status {
-          padding: 8px 16px;
-          background: #fee2e2;
-          color: #991b1b;
-          border-radius: 12px;
-          font-size: 14px;
-          font-weight: 600;
-          white-space: nowrap;
-
-          &.active {
-            background: #d1fae5;
-            color: #065f46;
-          }
-        }
-      }
-    }
-
-    .period-info-card {
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 32px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-      .info-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 24px;
-        margin-bottom: 24px;
-        padding-bottom: 24px;
-        border-bottom: 2px solid #f3f4f6;
-
-        .info-item {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-
-          .info-label {
-            font-size: 13px;
-            color: #6b7280;
-            font-weight: 500;
-          }
-
-          .info-value {
-            font-size: 18px;
-            color: #1f2937;
-            font-weight: 600;
-          }
-
-          .badge {
-            display: inline-block;
-            width: fit-content;
-            padding: 6px 12px;
-            background: #fee2e2;
-            color: #991b1b;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-
-            &.active {
-              background: #d1fae5;
-              color: #065f46;
-            }
-          }
-        }
-      }
-
-      .period-description {
-        h3 {
-          font-size: 16px;
-          color: #1f2937;
-          margin-bottom: 12px;
-          font-weight: 600;
-        }
-
-        p {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.6;
-          margin: 0;
-        }
-      }
-    }
-
-    .careers-section {
-      .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-
-        h2 {
-          font-size: 24px;
-          color: #1f2937;
-          font-weight: 600;
-          margin: 0;
-        }
-
-        .career-stats {
-          display: flex;
-          gap: 12px;
-
-          .stat-badge {
-            padding: 6px 14px;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 600;
-
-            &.dual {
-              background: #dbeafe;
-              color: #1e40af;
-            }
-
-            &.traditional {
-              background: #fef3c7;
-              color: #92400e;
-            }
-          }
-        }
-      }
-    }
-
-    .careers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
-    .career-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: all 0.3s;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      }
-
-      .career-header {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 24px 24px 20px;
-        border-bottom: 2px solid #f3f4f6;
-
-        .career-icon {
-          font-size: 40px;
-          flex-shrink: 0;
-        }
-
-        .career-info {
-          flex: 1;
-          min-width: 0;
-
-          h3 {
-            font-size: 18px;
-            color: #1f2937;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
-          }
-
-          .career-type {
-            display: inline-block;
-            padding: 4px 10px;
-            background: #fef3c7;
-            color: #92400e;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 600;
-
-            &.dual {
-              background: #dbeafe;
-              color: #1e40af;
-            }
-          }
-        }
-
-        .status-badge {
-          padding: 6px 12px;
-          background: #fee2e2;
-          color: #991b1b;
-          border-radius: 10px;
-          font-size: 12px;
-          font-weight: 600;
-          white-space: nowrap;
-
-          &.active {
-            background: #d1fae5;
-            color: #065f46;
-          }
-        }
-      }
-
-      .career-body {
-        padding: 20px 24px;
-
-        .career-description {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.6;
-          margin: 0;
-        }
-      }
-
-      .career-details {
-        padding: 20px 24px;
-        background: #f9fafb;
-
-        h4 {
-          font-size: 13px;
-          color: #6b7280;
-          font-weight: 600;
-          margin-bottom: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        .formation-types {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-
-          .formation-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1.5px solid;
-
-            &.vinculation {
-              background: #fffbeb;
-              border-color: #fbbf24;
-
-              .badge-icon {
-                color: #92400e;
-              }
-
-              .badge-text {
-                color: #92400e;
-                font-weight: 500;
-              }
-            }
-
-            &.dual {
-              background: #eff6ff;
-              border-color: #3b82f6;
-
-              .badge-icon {
-                color: #1e40af;
-              }
-
-              .badge-text {
-                color: #1e40af;
-                font-weight: 500;
-              }
-            }
-
-            &.prepro {
-              background: #ecfdf5;
-              border-color: #10b981;
-
-              .badge-icon {
-                color: #065f46;
-              }
-
-              .badge-text {
-                color: #065f46;
-                font-weight: 500;
-              }
-            }
-
-            .badge-icon {
-              font-size: 18px;
-            }
-
-            .badge-text {
-              font-size: 13px;
-            }
-          }
-        }
-      }
-
-      .career-actions {
-        padding: 16px 24px;
-        border-top: 1px solid #e5e7eb;
-        display: flex;
-        gap: 8px;
-      }
-    }
-
-    .stats-section {
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-      h2 {
-        font-size: 20px;
-        color: #1f2937;
-        font-weight: 600;
-        margin-bottom: 24px;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-      }
-
-      .stat-card {
-        display: flex;
-        gap: 16px;
-        padding: 20px;
-        background: #f9fafb;
-        border-radius: 10px;
-        border: 1.5px solid #e5e7eb;
-
-        .stat-icon {
-          font-size: 36px;
-        }
-
-        .stat-content {
-          flex: 1;
-
-          .stat-label {
-            font-size: 13px;
-            color: #6b7280;
-            font-weight: 500;
-            margin-bottom: 6px;
-          }
-
-          .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1f2937;
-            line-height: 1;
-            margin-bottom: 6px;
-          }
-
-          .stat-description {
-            font-size: 12px;
-            color: #9ca3af;
-          }
-        }
-      }
-    }
-
-    .empty-state, .loading-spinner {
-      text-align: center;
-      padding: 80px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-      .empty-icon {
-        font-size: 64px;
-        margin-bottom: 20px;
-      }
-
-      h3 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 8px;
-      }
-
-      p {
-        color: #6b7280;
-        margin-bottom: 24px;
-      }
-
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #667eea;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 16px;
-      }
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .error-message {
-      background: #fee2e2;
-      color: #991b1b;
-      padding: 16px 20px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 20px;
-      border: 1px solid #fecaca;
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .careers-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .career-stats {
-        flex-direction: column;
-      }
-    }
-  `]
+/* ================= CONTENEDOR GENERAL ================= */
+.career-list {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: 100vh;
+  background: #f1f5f9; /* gris claro */
+}
+
+/* ================= HEADER ================= */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.list-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.list-header p {
+  font-size: 15px;
+  color: #475569;
+  margin: 0;
+}
+
+/* ================= BOTONES ================= */
+.btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1px solid #cbd5f5;
+  color: #1e40af;
+}
+
+.btn-outline:hover {
+  background: #eff6ff;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+/* ================= LOADING ================= */
+.loading-spinner {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= GRID ================= */
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* ================= CARD ================= */
+.career-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.career-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 32px rgba(0,0,0,0.12);
+}
+
+/* ================= CARD HEADER ================= */
+.career-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.career-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* ================= ESTADO ================= */
+.career-status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.career-status.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* ================= BODY ================= */
+.career-body p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.career-info {
+  display: flex;
+  gap: 8px;
+}
+
+.info-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* ================= ACTIONS ================= */
+.career-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.empty-state p {
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* ================= ERROR ================= */
+.error-message {
+  margin-top: 24px;
+  padding: 14px 18px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .career-actions {
+    flex-direction: column;
+  }
+}
+`]
+
 })
 export class PeriodCareersComponent implements OnInit {
   private periodService = inject(PeriodService);

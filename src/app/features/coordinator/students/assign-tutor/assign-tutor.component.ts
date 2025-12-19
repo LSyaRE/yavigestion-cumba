@@ -178,402 +178,344 @@ import { Student, Tutor } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    .assign-tutor {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+/* ================= CONTENEDOR ================= */
+.assign-tutor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    .page-header {
-      margin-bottom: 32px;
+/* ================= HEADER ================= */
+.page-header {
+  margin-bottom: 32px;
+}
 
-      .btn-back {
-        background: transparent;
-        border: none;
-        color: #6b7280;
-        font-size: 14px;
-        cursor: pointer;
-        padding: 8px 0;
-        margin-bottom: 16px;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
+.btn-back {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
 
-        &:hover {
-          color: #1f2937;
-        }
-      }
+.btn-back:hover {
+  color: #1f2937;
+}
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+.page-header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
+.page-header p {
+  color: #6b7280;
+  font-size: 16px;
+  margin: 0;
+}
 
-    .loading-spinner {
-      text-align: center;
-      padding: 80px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ================= LOADING ================= */
+.loading-spinner {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #667eea;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 16px;
-      }
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
 
-      p {
-        color: #6b7280;
-      }
-    }
+.loading-spinner p {
+  color: #6b7280;
+}
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
-    .alert {
-      padding: 16px 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 24px;
-      border: 1px solid;
+/* ================= ALERTAS ================= */
+.alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border: 1px solid;
+}
 
-      &.alert-error {
-        background: #fee2e2;
-        color: #991b1b;
-        border-color: #fecaca;
-      }
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
 
-      &.alert-success {
-        background: #d1fae5;
-        color: #065f46;
-        border-color: #a7f3d0;
-      }
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
 
-      .alert-icon {
-        font-size: 20px;
-        flex-shrink: 0;
-      }
+.alert-icon {
+  font-size: 20px;
+}
 
-      .alert-content {
-        flex: 1;
+.alert-content strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
 
-        strong {
-          display: block;
-          margin-bottom: 4px;
-          font-weight: 600;
-        }
+.alert-content p {
+  margin: 0;
+  font-size: 14px;
+}
 
-        p {
-          margin: 0;
-          font-size: 14px;
-        }
-      }
-    }
+/* ================= GRID ================= */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
 
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: start;
-    }
+/* ================= CARDS ================= */
+.info-card,
+.form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
 
-    .info-card, .form-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
 
-    .card-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid #e5e7eb;
-      background: #f9fafb;
+.card-header h2 {
+  font-size: 18px;
+  color: #1f2937;
+  font-weight: 600;
+  margin: 0;
+}
 
-      h2 {
-        font-size: 18px;
-        color: #1f2937;
-        font-weight: 600;
-        margin: 0;
-      }
-    }
+.card-body {
+  padding: 24px;
+}
 
-    .card-body {
-      padding: 24px;
-    }
+/* ================= ESTUDIANTE ================= */
+.student-profile {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
 
-    .student-profile {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
+.student-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+}
 
-    .student-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
+.student-details h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
 
-    .student-details {
-      flex: 1;
+.detail-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
 
-      h3 {
-        font-size: 20px;
-        color: #1f2937;
-        font-weight: 700;
-        margin: 0 0 12px 0;
-      }
-    }
+.label {
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 80px;
+}
 
-    .detail-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 14px;
+.value {
+  color: #1f2937;
+}
 
-      .label {
-        color: #6b7280;
-        font-weight: 500;
-        min-width: 80px;
-      }
+.status-active {
+  color: #065f46;
+  font-weight: 600;
+}
 
-      .value {
-        color: #1f2937;
-        font-weight: 400;
+/* ================= ASIGNATURAS ================= */
+.subjects-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
 
-        &.status-active {
-          color: #065f46;
-          font-weight: 600;
-        }
-      }
-    }
+.subjects-section h4,
+.current-tutor h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
 
-    .subjects-section {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e7eb;
+.subjects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-      h4 {
-        font-size: 14px;
-        font-weight: 600;
-        color: #1f2937;
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-    }
+.subject-item {
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
 
-    .subjects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+.subject-item.vinculation {
+  background: #fef3c7;
+  color: #92400e;
+}
 
-    .subject-item {
-      padding: 12px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
+.subject-item.dual {
+  background: #dbeafe;
+  color: #1e40af;
+}
 
-      &.vinculation {
-        background: #fef3c7;
-        color: #92400e;
-      }
+.subject-item.prepro {
+  background: #d1fae5;
+  color: #065f46;
+}
 
-      &.dual {
-        background: #dbeafe;
-        color: #1e40af;
-      }
+/* ================= TUTOR ================= */
+.current-tutor {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
 
-      &.prepro {
-        background: #d1fae5;
-        color: #065f46;
-      }
+.tutor-info-box {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
 
-      .subject-type {
-        font-weight: 600;
-      }
+.tutor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
 
-      .subject-period {
-        font-size: 12px;
-        opacity: 0.8;
-      }
-    }
+/* ================= FORM ================= */
+.form-group {
+  margin-bottom: 24px;
+}
 
-    .current-tutor {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e7eb;
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
-      h4 {
-        font-size: 14px;
-        font-weight: 600;
-        color: #1f2937;
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-    }
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
 
-    .tutor-info-box {
-      display: flex;
-      gap: 12px;
-      padding: 12px;
-      background: #f3f4f6;
-      border-radius: 8px;
-      align-items: center;
-    }
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+}
 
-    .tutor-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
+.form-control.error {
+  border-color: #ef4444;
+}
 
-    .tutor-name {
-      font-weight: 600;
-      color: #1f2937;
-      margin-bottom: 2px;
-    }
+.error-message {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 6px;
+}
 
-    .tutor-email {
-      font-size: 13px;
-      color: #6b7280;
-    }
+.help-text {
+  font-size: 12px;
+  color: #6b7280;
+}
 
-    .form-group {
-      margin-bottom: 24px;
+/* ================= ACCIONES ================= */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
 
-      label {
-        display: block;
-        font-size: 14px;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 8px;
-      }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 968px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-      .form-control {
-        width: 100%;
-        padding: 10px 14px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #1f2937;
-        transition: all 0.2s;
+@media (max-width: 640px) {
+  .student-profile {
+    flex-direction: column;
+    text-align: center;
+  }
 
-        &:focus {
-          outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
+  .detail-row {
+    flex-direction: column;
+  }
 
-        &.error {
-          border-color: #ef4444;
-        }
-      }
+  .form-actions {
+    flex-direction: column;
+  }
 
-      select.form-control {
-        cursor: pointer;
-        background-color: white;
-      }
+  .form-actions button {
+    width: 100%;
+  }
+}
+`]
 
-      textarea.form-control {
-        resize: vertical;
-        min-height: 100px;
-      }
-
-      .error-message {
-        color: #ef4444;
-        font-size: 13px;
-        margin-top: 6px;
-      }
-
-      .help-text {
-        display: block;
-        color: #6b7280;
-        font-size: 12px;
-        margin-top: 6px;
-      }
-    }
-
-    .form-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    @media (max-width: 968px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .assign-tutor {
-        padding: 0 16px;
-      }
-
-      .student-profile {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .detail-row {
-        flex-direction: column;
-        gap: 4px;
-
-        .label {
-          min-width: auto;
-        }
-      }
-
-      .form-actions {
-        flex-direction: column;
-
-        button {
-          width: 100%;
-        }
-      }
-    }
-  `]
 })
 export class AssignTutorComponent implements OnInit {
   private fb = inject(FormBuilder);

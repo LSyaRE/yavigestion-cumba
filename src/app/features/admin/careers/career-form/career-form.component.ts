@@ -117,37 +117,198 @@ import { Career } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    /* Similar a period-form.component.ts */
-    .info-box {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 20px;
+/* CONTENEDOR */
+.career-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
 
-      h3 {
-        font-size: 14px;
-        color: #1e40af;
-        margin-bottom: 12px;
-        font-weight: 600;
-      }
+/* HEADER */
+.form-header {
+  margin-bottom: 24px;
+}
 
-      ul {
-        margin: 0;
-        padding-left: 20px;
+.back-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-        li {
-          font-size: 13px;
-          color: #1e40af;
-          margin-bottom: 8px;
+.back-link:hover {
+  text-decoration: underline;
+}
 
-          strong {
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  `]
+.form-header h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #0f172a;
+}
+
+.form-header p {
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* FORM CARD */
+.form-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.form-card h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #1e3a8a;
+}
+
+/* FORM GRID */
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  flex: 100%;
+}
+
+/* LABELS */
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+.form-control {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  outline: none;
+}
+
+/* INVALID */
+.is-invalid {
+  border-color: #dc2626;
+}
+
+.invalid-feedback {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+/* INFO BOX */
+.info-box {
+  background: #eff6ff;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.info-box h3 {
+  font-size: 14px;
+  color: #1e40af;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.info-box li {
+  font-size: 13px;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+
+/* ALERT ERROR */
+.alert-danger {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* ACTIONS */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.btn-primary:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+`]
 })
 export class CareerFormComponent implements OnInit {
   private fb = inject(FormBuilder);

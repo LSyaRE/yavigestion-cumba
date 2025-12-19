@@ -100,238 +100,282 @@ interface DashboardStats {
     </div>
   `,
   styles: [`
-    .dashboard {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+/* ================= CONTENEDOR GENERAL ================= */
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: 100vh;
 
-    .dashboard-header {
-      margin-bottom: 32px;
+  /* Imagen de fondo */
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.75),
+      rgba(15, 23, 42, 0.75)
+    ),
+    url('https://yavirac.edu.ec/wp-content/uploads/2024/05/vision.jpg');
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-      }
-    }
+/* ================= HEADER ================= */
+.dashboard-header {
+  margin-bottom: 36px;
+}
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
-    }
+.dashboard-header h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+}
 
-    .stat-card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      display: flex;
-      gap: 20px;
-      transition: all 0.3s;
+.dashboard-header p {
+  font-size: 15px;
+  color: #e5e7eb;
+}
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
+/* ================= STATS ================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 44px;
+}
 
-      &.action-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 26px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
 
-        .stat-label {
-          color: rgba(255, 255, 255, 0.9);
-        }
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
 
-        .stat-link {
-          color: white;
-          font-weight: 600;
-        }
-      }
-    }
+/* Card especial */
+.stat-card.action-card {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
 
-    .stat-icon {
-      font-size: 40px;
-      line-height: 1;
-    }
+.stat-card.action-card .stat-label,
+.stat-card.action-card .stat-value,
+.stat-card.action-card .stat-link {
+  color: #ffffff;
+}
 
-    .stat-content {
-      flex: 1;
-    }
+/* ================= ICONOS ================= */
+.stat-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  flex-shrink: 0;
+}
 
-    .stat-label {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
+.stat-card.action-card .stat-icon {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+}
 
-    .stat-value {
-      font-size: 36px;
-      font-weight: 700;
-      color: #1f2937;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
+/* ================= TEXTO STATS ================= */
+.stat-content {
+  flex: 1;
+}
 
-    .stat-sublabel {
-      font-size: 13px;
-      color: #9ca3af;
-    }
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
 
-    .stat-link {
-      color: #667eea;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+.stat-value {
+  font-size: 38px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+.stat-sublabel {
+  font-size: 13px;
+  color: #64748b;
+}
 
-    .quick-actions {
-      margin-bottom: 40px;
+/* ================= LINK ================= */
+.stat-link {
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
 
-      h2 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-    }
+.stat-link:hover {
+  text-decoration: underline;
+}
 
-    .actions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
+/* ================= ACCIONES RÁPIDAS ================= */
+.quick-actions {
+  margin-bottom: 44px;
+}
 
-    .action-btn {
-      background: white;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 20px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s;
-      color: #1f2937;
+.quick-actions h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 22px;
+}
 
-      &:hover {
-        border-color: #667eea;
-        background: #f9fafb;
-        transform: translateY(-2px);
-      }
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
 
-      .action-icon {
-        font-size: 32px;
-      }
+.action-btn {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 24px;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
 
-      span:last-child {
-        font-size: 14px;
-        font-weight: 500;
-      }
-    }
+.action-btn:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-6px);
+}
 
-    .recent-activity {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* Iconos */
+.action-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      h2 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-    }
+.action-btn:hover .action-icon {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
 
-    .activity-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+/* ================= ACTIVIDAD ================= */
+.recent-activity {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
 
-    .activity-item {
-      display: flex;
-      gap: 16px;
-      padding: 12px;
-      border-radius: 8px;
-      transition: background 0.2s;
+.recent-activity h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
 
-      &:hover {
-        background: #f9fafb;
-      }
-    }
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    .activity-icon {
-      font-size: 24px;
-    }
+.activity-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+}
 
-    .activity-content {
-      flex: 1;
-    }
+.activity-item:hover {
+  background: #f1f5f9;
+}
 
-    .activity-title {
-      font-size: 14px;
-      color: #1f2937;
-      margin-bottom: 4px;
-      font-weight: 500;
-    }
+.activity-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
 
-    .activity-time {
-      font-size: 13px;
-      color: #6b7280;
-    }
+.activity-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
 
-    .loading-spinner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px;
+.activity-time {
+  font-size: 13px;
+  color: #64748b;
+}
 
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #667eea;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
+/* ================= LOADING ================= */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  color: white;
+}
 
-      p {
-        margin-top: 16px;
-        color: #6b7280;
-        font-size: 14px;
-      }
-    }
+.spinner {
+  width: 46px;
+  height: 46px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 
-    @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-      .actions-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  `]
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+`]
 })
 export class AdminDashboardComponent implements OnInit {
   private periodService = inject(PeriodService);

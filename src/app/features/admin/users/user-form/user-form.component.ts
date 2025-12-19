@@ -263,174 +263,185 @@ import { User, BloodType } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    .user-form-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  /* ================= CONTENEDOR GENERAL ================= */
+.user-form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
 
-    .form-header {
-      margin-bottom: 32px;
+/* ================= HEADER ================= */
+.form-header {
+  margin-bottom: 32px;
+}
 
-      .back-link {
-        color: #667eea;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 12px;
-        display: inline-block;
+.form-header .back-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: inline-block;
+}
 
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+.form-header .back-link:hover {
+  text-decoration: underline;
+}
 
-      h1 {
-        font-size: 32px;
-        color: #1f2937;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
+.form-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
 
-      p {
-        color: #6b7280;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
+.form-header p {
+  font-size: 16px;
+  color: #6b7280;
+}
 
-    .user-form {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+/* ================= FORM ================= */
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-    .form-card {
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* ================= CARD ================= */
+.form-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
 
-      h2 {
-        font-size: 20px;
-        color: #1f2937;
-        margin-bottom: 24px;
-        font-weight: 600;
-        padding-bottom: 16px;
-        border-bottom: 2px solid #f3f4f6;
-      }
-    }
+.form-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 20px;
+/* ================= GRID ================= */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+.form-row:last-child {
+  margin-bottom: 0;
+}
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
+/* ================= INPUTS ================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
 
-      &.full-width {
-        grid-column: 1 / -1;
-      }
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
 
-      label {
-        font-size: 14px;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 8px;
-      }
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
 
-      .form-control {
-        padding: 12px 16px;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: all 0.2s;
-        background-color: #f9fafb;
-        font-family: inherit;
+.form-control {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
 
-        &:focus {
-          outline: none;
-          border-color: #667eea;
-          background-color: white;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
+.form-control::placeholder {
+  color: #9ca3af;
+}
 
-        &.is-invalid {
-          border-color: #ef4444;
-          background-color: #fef2f2;
-        }
+.form-control:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
 
-        &::placeholder {
-          color: #9ca3af;
-        }
-      }
+/* ================= INVALID ================= */
+.form-control.is-invalid {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
 
-      textarea.form-control {
-        resize: vertical;
-        min-height: 80px;
-        font-family: inherit;
-      }
+.invalid-feedback {
+  font-size: 13px;
+  color: #ef4444;
+  margin-top: 6px;
+}
 
-      .invalid-feedback {
-        color: #ef4444;
-        font-size: 13px;
-        margin-top: 6px;
-      }
-    }
+/* ================= TEXTAREA ================= */
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
 
-    .form-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      padding-top: 8px;
-    }
+/* ================= ACTIONS ================= */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
 
-    .loading-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+/* ================= BUTTON STATES ================= */
+.loading-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .alert {
-      padding: 16px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      border: 1px solid transparent;
-    }
+/* ================= ALERTS ================= */
+.alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+}
 
-    .alert-danger {
-      background: #fee2e2;
-      color: #991b1b;
-      border-color: #fecaca;
-    }
+.alert-danger {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
 
-    .alert-success {
-      background: #d1fae5;
-      color: #065f46;
-      border-color: #a7f3d0;
-    }
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
 
-    @media (max-width: 768px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 
-      .form-actions {
-        flex-direction: column-reverse;
+  .form-actions {
+    flex-direction: column-reverse;
+  }
 
-        button {
-          width: 100%;
-        }
-      }
-    }
+  .form-actions button {
+    width: 100%;
+  }
+}
   `]
 })
 export class UserFormComponent implements OnInit {

@@ -138,82 +138,309 @@ import { User } from '../../../../core/models';
     </div>
   `,
   styles: [`
-    /* Estilos similares a student-list */
-    .filter-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+   /* ================= CONTENEDOR GENERAL ================= */
+.user-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
 
-      .tab-btn {
-        padding: 10px 20px;
-        border: 1.5px solid #e5e7eb;
-        background: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        color: #6b7280;
-        transition: all 0.2s;
+/* ================= HEADER ================= */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-        &:hover {
-          background: #f9fafb;
-          border-color: #667eea;
-        }
+.list-header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
 
-        &.active {
-          background: #667eea;
-          color: white;
-          border-color: #667eea;
-        }
-      }
-    }
+.list-header p {
+  font-size: 15px;
+  color: #6b7280;
+}
 
-    .roles-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
+/* ================= BOTONES ================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
 
-      .role-badge {
-        padding: 4px 10px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: 600;
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+}
 
-        &.admin {
-          background: #fee2e2;
-          color: #991b1b;
-        }
+.btn-primary:hover {
+  background: #4338ca;
+}
 
-        &.coordinator {
-          background: #dbeafe;
-          color: #1e40af;
-        }
+.btn-outline {
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  color: #374151;
+}
 
-        &.tutor {
-          background: #fef3c7;
-          color: #92400e;
-        }
+.btn-outline:hover {
+  background: #f9fafb;
+  border-color: #4f46e5;
+}
 
-        &.student {
-          background: #d1fae5;
-          color: #065f46;
-        }
-      }
-    }
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
 
-    .status-badge {
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      background: #fee2e2;
-      color: #991b1b;
+.btn-danger:hover {
+  background: #dc2626;
+}
 
-      &.active {
-        background: #d1fae5;
-        color: #065f46;
-      }
-    }
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* ================= FILTROS ================= */
+.filters-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #f9fafb;
+  border-color: #4f46e5;
+}
+
+.tab-btn.active {
+  background: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+}
+
+/* ================= LOADING ================= */
+.loading-spinner {
+  text-align: center;
+  padding: 60px 0;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= TABLA ================= */
+.users-table-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table thead {
+  background: #f9fafb;
+}
+
+.users-table th {
+  text-align: left;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.users-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+}
+
+.users-table tr:hover {
+  background: #f9fafb;
+}
+
+/* ================= USUARIO ================= */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.user-dni {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ================= ROLES ================= */
+.roles-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-badge.admin {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.role-badge.coordinator {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.role-badge.tutor {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.role-badge.student {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* ================= ESTADO ================= */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* ================= ACCIONES ================= */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ================= EMPTY ================= */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #6b7280;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
   `]
 })
 export class UserListComponent implements OnInit {
