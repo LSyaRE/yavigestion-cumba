@@ -25,7 +25,12 @@ interface DashboardStats {
 
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon">📅</div>
+          <div class="stat-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <rect x="5" y="6" width="24" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M5 12h24M10 4v4M24 4v4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Periodos Académicos</div>
             <div class="stat-value">{{ stats.totalPeriods }}</div>
@@ -34,7 +39,12 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">🎓</div>
+          <div class="stat-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <path d="M17 4l-10 8v14h8v-8h4v8h8V12l-10-8z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="17" cy="10" r="2" fill="currentColor"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Carreras</div>
             <div class="stat-value">{{ stats.totalCareers }}</div>
@@ -42,7 +52,13 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <circle cx="12" cy="10" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="22" cy="10" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 26v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3M19 26v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Usuarios</div>
             <div class="stat-value">{{ stats.totalUsers }}</div>
@@ -50,7 +66,12 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card action-card">
-          <div class="stat-icon">⚙️</div>
+          <div class="stat-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M17 3v3M17 28v3M6 6l2 2M26 26l2 2M3 17h3M28 17h3M6 28l2-2M26 8l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Configuración</div>
             <a routerLink="/admin/users" class="stat-link">Gestionar →</a>
@@ -62,19 +83,37 @@ interface DashboardStats {
         <h2>Acciones Rápidas</h2>
         <div class="actions-grid">
           <a routerLink="/admin/periods/new" class="action-btn">
-            <span class="action-icon">➕</span>
+            <span class="action-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 8v16M8 16h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
             <span>Nuevo Periodo</span>
           </a>
           <a routerLink="/admin/careers/new" class="action-btn">
-            <span class="action-icon">📚</span>
+            <span class="action-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M8 8h16v16H8V8z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 14h8M12 18h8" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
             <span>Nueva Carrera</span>
           </a>
           <a routerLink="/admin/users/new" class="action-btn">
-            <span class="action-icon">👤</span>
+            <span class="action-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 26v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
             <span>Nuevo Usuario</span>
           </a>
           <a routerLink="/admin/periods" class="action-btn">
-            <span class="action-icon">📋</span>
+            <span class="action-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M10 8h16M10 14h16M10 20h16M4 8h.01M4 14h.01M4 20h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
             <span>Ver Periodos</span>
           </a>
         </div>
@@ -84,7 +123,12 @@ interface DashboardStats {
         <h2>Actividad Reciente</h2>
         <div class="activity-list">
           <div class="activity-item">
-            <div class="activity-icon">📅</div>
+            <div class="activity-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <rect x="3" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h16M8 3v3M14 3v3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="activity-content">
               <div class="activity-title">Sistema iniciado</div>
               <div class="activity-time">Hoy</div>
@@ -180,7 +224,6 @@ interface DashboardStats {
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,7 +318,6 @@ interface DashboardStats {
   border-radius: 50%;
   background: linear-gradient(135deg, #2563eb, #1e40af);
   color: white;
-  font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -327,7 +369,7 @@ interface DashboardStats {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  flex-shrink: 0;
 }
 
 .activity-title {

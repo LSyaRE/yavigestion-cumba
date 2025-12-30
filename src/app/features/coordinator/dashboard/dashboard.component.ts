@@ -33,7 +33,13 @@ interface DashboardStats {
       <!-- Estadísticas Principales -->
       <div class="stats-grid">
         <div class="stat-card primary">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <circle cx="14" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="28" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M6 32v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3M25 32v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Total Estudiantes</div>
             <div class="stat-value">{{ stats.totalStudents }}</div>
@@ -42,7 +48,12 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card success">
-          <div class="stat-icon">✓</div>
+          <div class="stat-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <circle cx="21" cy="21" r="18" stroke="currentColor" stroke-width="2"/>
+              <path d="M13 21l6 6 10-10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Matriculados SIGA</div>
             <div class="stat-value">{{ stats.matriculatedInSIGA }}</div>
@@ -51,7 +62,12 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card warning">
-          <div class="stat-icon">👔</div>
+          <div class="stat-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <rect x="9" y="15" width="24" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M15 12h12v3H15z" fill="currentColor"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Con Tutor Asignado</div>
             <div class="stat-value">{{ stats.withTutor }}</div>
@@ -60,7 +76,11 @@ interface DashboardStats {
         </div>
 
         <div class="stat-card info">
-          <div class="stat-icon">📚</div>
+          <div class="stat-icon">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <path d="M21 6L9 14v18h8v-10h8v10h8V14L21 6z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Mis Carreras</div>
             <div class="stat-value">{{ careers.length }}</div>
@@ -72,14 +92,25 @@ interface DashboardStats {
       <!-- Distribución por Tipo de Formación -->
       <div class="section-card">
         <div class="section-header">
-          <h2>📊 Distribución por Tipo de Formación</h2>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 11l3 3 6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Distribución por Tipo de Formación
+          </h2>
           <p>Estudiantes según su tipo de asignatura</p>
         </div>
 
         <div class="formation-types-grid">
           <div class="formation-card vinculation">
             <div class="formation-header">
-              <div class="formation-icon">🤝</div>
+              <div class="formation-icon">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <path d="M12 10c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2v-5h-2v-2h2v-2h-2v-2h2v-2h-2z" fill="currentColor"/>
+                  <path d="M22 10c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h2v-5h-2v-2h2v-2h-2v-2h2v-2h-2z" fill="currentColor"/>
+                </svg>
+              </div>
               <div class="formation-title">Vinculación con la Comunidad</div>
             </div>
             <div class="formation-stats">
@@ -94,7 +125,12 @@ interface DashboardStats {
 
           <div class="formation-card dual">
             <div class="formation-header">
-              <div class="formation-icon">🎓</div>
+              <div class="formation-icon">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <path d="M17 4l-10 8v14h8v-8h4v8h8V12l-10-8z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="17" cy="10" r="2" fill="currentColor"/>
+                </svg>
+              </div>
               <div class="formation-title">Prácticas Formación Dual</div>
             </div>
             <div class="formation-stats">
@@ -109,7 +145,12 @@ interface DashboardStats {
 
           <div class="formation-card prepro">
             <div class="formation-header">
-              <div class="formation-icon">💼</div>
+              <div class="formation-icon">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <rect x="8" y="12" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 10h10v2H12z" fill="currentColor"/>
+                </svg>
+              </div>
               <div class="formation-title">Prácticas Preprofesionales</div>
             </div>
             <div class="formation-stats">
@@ -127,7 +168,14 @@ interface DashboardStats {
       <!-- Mis Carreras -->
       <div class="section-card">
         <div class="section-header">
-          <h2>🎓 Mis Carreras</h2>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <path d="M11 2L2 6l9 4 9-4-9-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M2 16l9 4 9-4" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M2 11l9 4 9-4" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Mis Carreras
+          </h2>
           <p>Carreras bajo tu coordinación</p>
         </div>
 
@@ -135,7 +183,13 @@ interface DashboardStats {
           <div class="career-item" *ngFor="let career of careers">
             <div class="career-info">
               <div class="career-icon">
-                {{ career.isDual ? '🎓' : '📚' }}
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" *ngIf="career.isDual">
+                  <path d="M17 4l-10 8v14h8v-8h4v8h8V12l-10-8z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" *ngIf="!career.isDual">
+                  <path d="M8 8h18v18H8V8z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 14h10M12 18h10" stroke="currentColor" stroke-width="2"/>
+                </svg>
               </div>
               <div class="career-details">
                 <div class="career-name">{{ career.name }}</div>
@@ -163,30 +217,56 @@ interface DashboardStats {
       <!-- Acciones Rápidas -->
       <div class="section-card">
         <div class="section-header">
-          <h2>⚡ Acciones Rápidas</h2>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <path d="M11 2l-2 5h5l-2 5M11 20c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Acciones Rápidas
+          </h2>
         </div>
 
         <div class="quick-actions-grid">
           <a routerLink="/coordinator/students" class="action-card">
-            <div class="action-icon">👥</div>
+            <div class="action-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <circle cx="14" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="28" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 32v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3M25 32v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="action-title">Gestionar Estudiantes</div>
             <div class="action-description">Ver y filtrar estudiantes</div>
           </a>
 
           <a routerLink="/coordinator/students" [queryParams]="{siga: 'false'}" class="action-card">
-            <div class="action-icon">⚠️</div>
+            <div class="action-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <circle cx="21" cy="21" r="18" stroke="currentColor" stroke-width="2"/>
+                <path d="M21 13v8M21 27v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <div class="action-title">No Matriculados</div>
             <div class="action-description">{{ stats.totalStudents - stats.matriculatedInSIGA }} sin matrícula SIGA</div>
           </a>
 
           <a routerLink="/coordinator/students" [queryParams]="{tutor: 'false'}" class="action-card">
-            <div class="action-icon">🔍</div>
+            <div class="action-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <circle cx="21" cy="21" r="18" stroke="currentColor" stroke-width="2"/>
+                <path d="M21 21l8-8M13 13l8 8" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="action-title">Sin Tutor</div>
             <div class="action-description">{{ stats.totalStudents - stats.withTutor }} sin tutor asignado</div>
           </a>
 
           <a routerLink="/coordinator/reports" class="action-card">
-            <div class="action-icon">📄</div>
+            <div class="action-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <path d="M13 6h16l6 6v22a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2"/>
+                <path d="M29 6v6h6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="action-title">Generar Reportes</div>
             <div class="action-description">Exportar información</div>
           </a>
@@ -258,9 +338,12 @@ interface DashboardStats {
 .stat-card.info    { border-color: #3b82f6; }
 
 .stat-icon {
-  font-size: 40px;
-  line-height: 1;
+  color: #667eea;
 }
+
+.stat-card.success .stat-icon { color: #10b981; }
+.stat-card.warning .stat-icon { color: #f59e0b; }
+.stat-card.info .stat-icon { color: #3b82f6; }
 
 .stat-content {
   flex: 1;
@@ -308,6 +391,10 @@ interface DashboardStats {
   font-weight: 600;
   color: #1f2937;
   margin-bottom: 4px;
+}
+
+.section-header h2 svg {
+  color: #667eea;
 }
 
 .section-header p {
@@ -358,8 +445,12 @@ interface DashboardStats {
 }
 
 .formation-icon {
-  font-size: 32px;
+  color: inherit;
 }
+
+.formation-card.vinculation .formation-icon { color: #fbbf24; }
+.formation-card.dual .formation-icon { color: #3b82f6; }
+.formation-card.prepro .formation-icon { color: #10b981; }
 
 .formation-title {
   font-size: 16px;
@@ -419,7 +510,7 @@ interface DashboardStats {
 }
 
 .career-icon {
-  font-size: 32px;
+  color: #667eea;
 }
 
 .career-name {
@@ -486,7 +577,7 @@ interface DashboardStats {
 }
 
 .action-icon {
-  font-size: 40px;
+  color: #667eea;
   margin-bottom: 12px;
 }
 

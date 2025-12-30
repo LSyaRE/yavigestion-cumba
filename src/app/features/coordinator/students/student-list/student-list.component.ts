@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { StudentService } from '../../../../core/services/student.service';
 import { CareerService } from '../../../../core/services/career.service';
 import { PeriodService } from '../../../../core/services/period.service';
-import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/models';
+import { Student, Career, AcademicPeriod } from '../../../../core/models';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-student-list',
@@ -18,8 +19,22 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
         <p>Administración de estudiantes de tus carreras</p>
       </div>
 
-      <!-- Filtros -->
+      <!-- Filtros + Carga masiva -->
       <div class="filters-card">
+        <div class="bulk-upload">
+          <button class="btn btn-primary" (click)="fileInput.click()">
+            📥 Carga masiva de estudiantes
+          </button>
+
+          <input
+  #fileInput
+  type="file"
+  accept=".xlsx,.xls"
+  hidden
+  (change)="onFileSelected($event)"
+/>
+        </div>
+
         <div class="filters-row">
           <select [(ngModel)]="selectedCareer" (change)="applyFilters()" class="filter-select">
             <option value="">Todas las Carreras</option>
@@ -42,11 +57,13 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
             <option value="PREPROFESSIONAL_INTERNSHIP">Preprofesionales</option>
           </select>
 
-          <button class="btn btn-outline" (click)="clearFilters()">Limpiar Filtros</button>
+          <button class="btn btn-outline" (click)="clearFilters()">
+            Limpiar Filtros
+          </button>
         </div>
       </div>
 
-      <!-- Lista de Estudiantes -->
+      <!-- Lista -->
       <div class="students-grid" *ngIf="!loading && filteredStudents.length > 0">
         <div class="student-card" *ngFor="let student of filteredStudents">
           <div class="student-header">
@@ -79,8 +96,8 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
           </div>
 
           <div class="student-actions">
-            <a 
-              [routerLink]="['/coordinator/students', student.id, 'assign-tutor']" 
+            <a
+              [routerLink]="['/coordinator/students', student.id, 'assign-tutor']"
               class="btn btn-primary btn-sm btn-block"
             >
               👔 Asignar Tutor
@@ -89,14 +106,13 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
         </div>
       </div>
 
-      <!-- Estado vacío -->
+      <!-- Estados -->
       <div class="empty-state" *ngIf="!loading && filteredStudents.length === 0">
         <div class="empty-icon">👥</div>
         <h3>No se encontraron estudiantes</h3>
         <p>No hay estudiantes que coincidan con los filtros seleccionados</p>
       </div>
 
-      <!-- Loading -->
       <div class="loading-spinner" *ngIf="loading">
         <div class="spinner"></div>
         <p>Cargando estudiantes...</p>
@@ -108,6 +124,26 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
 .student-list-container {
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.bulk-upload {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
 }
 
 /* ================= HEADER ================= */
@@ -320,6 +356,7 @@ import { Student, Career, AcademicPeriod, SubjectType } from '../../../../core/m
 
 })
 export class StudentListComponent implements OnInit {
+
   private studentService = inject(StudentService);
   private careerService = inject(CareerService);
   private periodService = inject(PeriodService);
@@ -329,74 +366,53 @@ export class StudentListComponent implements OnInit {
   filteredStudents: Student[] = [];
   careers: Career[] = [];
   periods: AcademicPeriod[] = [];
-  
+
   selectedCareer = '';
   selectedPeriod = '';
   selectedSubjectType = '';
-  
   loading = true;
 
   ngOnInit(): void {
-    this.loadData();
-    
-    // Aplicar filtros desde query params si existen
-    this.route.queryParams.subscribe(params => {
-      if (params['type']) {
-        this.selectedSubjectType = params['type'];
-      }
-      if (params['siga']) {
-        // Filtrar por matriculación SIGA
-      }
-      if (params['tutor']) {
-        // Filtrar por tutor
-      }
-    });
-  }
+  this.loading = false;
 
+  // Datos mock SOLO FRONT
+  this.careers = [
+    { id: 1, name: 'Desarrollo de Software' },
+  { id: 2, name: 'Redes' }
+  ] as Career[];
+
+  this.periods = [
+    { id: 1, name: '2025-1' },
+    { id: 2, name: '2025-2' }
+  ] as AcademicPeriod[];
+
+  this.students = [];
+  this.filteredStudents = [];
+}
   private loadData(): void {
     this.loading = true;
 
-    // Cargar carreras
-    this.careerService.getByCoordinator().subscribe({
-      next: (careers) => {
-        this.careers = careers;
-      }
-    });
+    this.careerService.getByCoordinator().subscribe(c => this.careers = c);
+    this.periodService.getAll().subscribe(p => this.periods = p);
 
-    // Cargar periodos
-    this.periodService.getAll().subscribe({
-      next: (periods) => {
-        this.periods = periods;
-      }
-    });
-
-    // Cargar estudiantes
     this.studentService.getAll().subscribe({
-      next: (students) => {
+      next: students => {
         this.students = students;
         this.applyFilters();
         this.loading = false;
       },
-      error: (error) => {
-        console.error('Error loading students:', error);
-        this.loading = false;
-      }
+      error: () => this.loading = false
     });
   }
 
   applyFilters(): void {
     this.filteredStudents = this.students.filter(student => {
-      // Filtro por carrera
       if (this.selectedCareer && student.career?.id !== +this.selectedCareer) {
         return false;
       }
 
-      // Filtro por tipo de asignatura
       if (this.selectedSubjectType) {
-        const hasSubject = student.enrolledSubjects?.some(
-          s => s.type === this.selectedSubjectType
-        );
-        if (!hasSubject) return false;
+        return student.enrolledSubjects?.some(s => s.type === this.selectedSubjectType);
       }
 
       return true;
@@ -410,9 +426,60 @@ export class StudentListComponent implements OnInit {
     this.applyFilters();
   }
 
+  onFileSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = (e: any) => {
+    const data = new Uint8Array(e.target.result);
+    const workbook = XLSX.read(data, { type: 'array' });
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const jsonData = XLSX.utils.sheet_to_json<any>(worksheet);
+    this.processBulkStudents(jsonData);
+
+    input.value = ''; // ✅ ahora sí
+  };
+
+  reader.readAsArrayBuffer(file);
+}
+
+  processBulkStudents(data: any[]): void {
+  const newStudents: Student[] = data.map((row, index) => {
+    if (!row.identificacion || !row.nombre_estudiante) return null;
+
+    const parts = row.nombre_estudiante.trim().split(' ');
+    const lastname = parts.slice(-2).join(' ');
+    const name = parts.slice(0, -2).join(' ');
+
+    return {
+      id: Date.now() + index, // ID temporal
+      email: `${row.identificacion}@estudiante.test`,
+      isMatriculatedInSIGA: true,
+      person: {
+        name,
+        lastname
+      },
+     career: this.careers.find(c => c.id === Number(row.codigo_carrera)) || null,
+    } as Student;
+  }).filter(Boolean) as Student[];
+
+  if (newStudents.length === 0) {
+    alert('⚠️ No se encontraron estudiantes válidos');
+    return;
+  }
+
+  // 🔥 INSERTAR EN FRONT
+  this.students = [...this.students, ...newStudents];
+  this.applyFilters();
+
+  alert(`✅ ${newStudents.length} estudiantes cargados en el frontend`);
+}
+
   getInitials(name?: string, lastname?: string): string {
-    const n = name?.charAt(0) || '';
-    const l = lastname?.charAt(0) || '';
-    return (n + l).toUpperCase() || 'U';
+    return `${name?.[0] || ''}${lastname?.[0] || ''}`.toUpperCase() || 'U';
   }
 }

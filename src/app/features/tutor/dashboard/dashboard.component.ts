@@ -13,7 +13,13 @@ import { Student, Evaluation } from '../../../core/models';
     <div class="tutor-dashboard">
       <div class="dashboard-header">
         <div>
-          <h1>👔 Dashboard del Tutor</h1>
+          <h1>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <rect x="6" y="10" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 8h12v2H10z" fill="currentColor"/>
+            </svg>
+            Dashboard del Tutor
+          </h1>
           <p>Gestión de estudiantes y evaluaciones</p>
         </div>
       </div>
@@ -21,7 +27,13 @@ import { Student, Evaluation } from '../../../core/models';
       <!-- Estadísticas -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="10" cy="9" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="18" cy="9" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 22v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M12 22v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Mis Estudiantes</div>
             <div class="stat-value">{{ students.length }}</div>
@@ -29,7 +41,12 @@ import { Student, Evaluation } from '../../../core/models';
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">✅</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+              <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Evaluados</div>
             <div class="stat-value">{{ evaluatedCount }}</div>
@@ -37,7 +54,12 @@ import { Student, Evaluation } from '../../../core/models';
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">⏳</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 8v6l4 2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Pendientes</div>
             <div class="stat-value">{{ students.length - evaluatedCount }}</div>
@@ -45,7 +67,12 @@ import { Student, Evaluation } from '../../../core/models';
         </div>
 
         <div class="stat-card">
-          <div class="stat-icon">📊</div>
+          <div class="stat-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="4" width="20" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 16l3 3 6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <div class="stat-content">
             <div class="stat-label">Total Evaluaciones</div>
             <div class="stat-value">{{ evaluations.length }}</div>
@@ -56,7 +83,14 @@ import { Student, Evaluation } from '../../../core/models';
       <!-- Estudiantes Asignados -->
       <div class="section-card">
         <div class="section-header">
-          <h2>👥 Mis Estudiantes</h2>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="16" cy="7" r="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 17v-1a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1M12 17v-1a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Mis Estudiantes
+          </h2>
           <a routerLink="/tutor/my-students" class="btn btn-outline btn-sm">
             Ver Todos →
           </a>
@@ -89,7 +123,11 @@ import { Student, Evaluation } from '../../../core/models';
               [routerLink]="['/tutor/evaluate', student.id]" 
               class="btn btn-primary btn-sm btn-block"
             >
-              📝 Evaluar
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                <path d="M3 2h6l2 2v6H3V2z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M5 6h4M5 8h3" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Evaluar
             </a>
           </div>
         </div>
@@ -102,7 +140,12 @@ import { Student, Evaluation } from '../../../core/models';
       <!-- Evaluaciones Recientes -->
       <div class="section-card">
         <div class="section-header">
-          <h2>📋 Evaluaciones Recientes</h2>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <path d="M8 6h10M8 10h10M8 14h10M4 6h.01M4 10h.01M4 14h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Evaluaciones Recientes
+          </h2>
           <a routerLink="/tutor/evaluations" class="btn btn-outline btn-sm">
             Ver Todas →
           </a>
@@ -110,7 +153,12 @@ import { Student, Evaluation } from '../../../core/models';
 
         <div class="evaluations-list" *ngIf="evaluations.length > 0">
           <div class="evaluation-item" *ngFor="let eval of evaluations.slice(0, 5)">
-            <div class="eval-icon">📝</div>
+            <div class="eval-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M5 3h10l3 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2"/>
+                <path d="M7 9h8M7 13h5" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="eval-content">
               <div class="eval-student">
                 {{ eval.student.person?.name }} {{ eval.student.person?.lastname }}
@@ -163,6 +211,10 @@ import { Student, Evaluation } from '../../../core/models';
   margin-bottom: 6px;
 }
 
+.dashboard-header h1 svg {
+  color: var(--blue);
+}
+
 .dashboard-header p {
   font-size: 15px;
   color: var(--gray);
@@ -202,7 +254,6 @@ import { Student, Evaluation } from '../../../core/models';
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
 }
 
 .stat-content .stat-label {
@@ -240,6 +291,10 @@ import { Student, Evaluation } from '../../../core/models';
   font-size: 20px;
   font-weight: 600;
   color: var(--black);
+}
+
+.section-header h2 svg {
+  color: var(--blue);
 }
 
 /* ================= STUDENTS ================= */
@@ -310,6 +365,12 @@ import { Student, Evaluation } from '../../../core/models';
   color: var(--orange);
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ================= EVALUATIONS ================= */
 .evaluations-list {
   display: flex;
@@ -341,7 +402,6 @@ import { Student, Evaluation } from '../../../core/models';
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
 }
 
 .eval-content {

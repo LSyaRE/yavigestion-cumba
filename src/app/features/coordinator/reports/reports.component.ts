@@ -12,7 +12,23 @@ import { FormsModule } from '@angular/forms';
 
       <div class="report-types">
         <div class="report-card" *ngFor="let report of reportTypes">
-          <div class="report-icon">{{ report.icon }}</div>
+          <div class="report-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <ng-container *ngIf="report.type === 'students'">
+                <circle cx="22" cy="20" r="8" stroke="currentColor" stroke-width="3"/>
+                <circle cx="42" cy="20" r="8" stroke="currentColor" stroke-width="3"/>
+                <path d="M8 52v-4a8 8 0 0 1 8-8h12a8 8 0 0 1 8 8v4M36 52v-4a8 8 0 0 1 8-8h12a8 8 0 0 1 8 8v4" stroke="currentColor" stroke-width="3"/>
+              </ng-container>
+              <ng-container *ngIf="report.type === 'vinculation'">
+                <path d="M24 20c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h4v-8h-4v-4h4v-4h-4v-4h4v-4h-4z" fill="currentColor"/>
+                <path d="M40 20c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h4v-8h-4v-4h4v-4h-4v-4h4v-4h-4z" fill="currentColor"/>
+              </ng-container>
+              <ng-container *ngIf="report.type === 'internships'">
+                <rect x="12" y="20" width="40" height="28" rx="4" stroke="currentColor" stroke-width="3"/>
+                <path d="M20 16h24v4H20z" fill="currentColor"/>
+              </ng-container>
+            </svg>
+          </div>
           <h3>{{ report.title }}</h3>
           <p>{{ report.description }}</p>
           <button class="btn btn-primary" (click)="generateReport(report.type)">
@@ -63,7 +79,7 @@ import { FormsModule } from '@angular/forms';
 
 /* ================= CONTENIDO ================= */
 .report-icon {
-  font-size: 64px;
+  color: #667eea;
   margin-bottom: 16px;
 }
 
@@ -116,19 +132,19 @@ export class ReportsComponent {
   reportTypes = [
     {
       type: 'students',
-      icon: '👥',
+      icon: '', // Ya no se usa, los iconos son SVG
       title: 'Reporte de Estudiantes',
       description: 'Lista completa de estudiantes con sus datos'
     },
     {
       type: 'vinculation',
-      icon: '🤝',
+      icon: '', // Ya no se usa, los iconos son SVG
       title: 'Vinculación',
       description: 'Reporte de estudiantes en vinculación'
     },
     {
       type: 'internships',
-      icon: '💼',
+      icon: '', // Ya no se usa, los iconos son SVG
       title: 'Prácticas',
       description: 'Reporte de estudiantes en prácticas'
     }

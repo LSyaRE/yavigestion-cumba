@@ -15,7 +15,10 @@ import { Student, Tutor } from '../../../../core/models';
       <!-- Header -->
       <div class="page-header">
         <button class="btn-back" (click)="goBack()">
-          ← Volver
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display: inline; vertical-align: middle;">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Volver
         </button>
         <div>
           <h1>Asignar Tutor Académico</h1>
@@ -31,7 +34,12 @@ import { Student, Tutor } from '../../../../core/models';
 
       <!-- Error Alert -->
       <div class="alert alert-error" *ngIf="errorMessage">
-        <span class="alert-icon">⚠️</span>
+        <span class="alert-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M11 7v4M11 15v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
         <div class="alert-content">
           <strong>Error</strong>
           <p>{{ errorMessage }}</p>
@@ -67,7 +75,11 @@ import { Student, Tutor } from '../../../../core/models';
                 <div class="detail-row">
                   <span class="label">Estado SIGA:</span>
                   <span class="value" [class.status-active]="student.isMatriculatedInSIGA">
-                    {{ student.isMatriculatedInSIGA ? '✓ Matriculado' : '✗ No Matriculado' }}
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                      <path *ngIf="student.isMatriculatedInSIGA" d="M12 4L5.5 10.5L2 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path *ngIf="!student.isMatriculatedInSIGA" d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    {{ student.isMatriculatedInSIGA ? 'Matriculado' : 'No Matriculado' }}
                   </span>
                 </div>
               </div>
@@ -169,7 +181,12 @@ import { Student, Tutor } from '../../../../core/models';
 
       <!-- Success Message -->
       <div class="alert alert-success" *ngIf="successMessage">
-        <span class="alert-icon">✓</span>
+        <span class="alert-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 11l3 3 5-5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </span>
         <div class="alert-content">
           <strong>Éxito</strong>
           <p>{{ successMessage }}</p>
@@ -200,7 +217,7 @@ import { Student, Tutor } from '../../../../core/models';
   margin-bottom: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   transition: color 0.2s;
 }
 
@@ -271,7 +288,7 @@ import { Student, Tutor } from '../../../../core/models';
 }
 
 .alert-icon {
-  font-size: 20px;
+  flex-shrink: 0;
 }
 
 .alert-content strong {
@@ -337,6 +354,7 @@ import { Student, Tutor } from '../../../../core/models';
   justify-content: center;
   font-weight: 700;
   font-size: 20px;
+  flex-shrink: 0;
 }
 
 .student-details h3 {
@@ -436,6 +454,7 @@ import { Student, Tutor } from '../../../../core/models';
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 /* ================= FORM ================= */

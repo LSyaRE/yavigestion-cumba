@@ -23,40 +23,58 @@ import { AuthService } from '../../../core/services/auth.service';
       <span class="logo-text">Yavirac</span>
 
       <button class="btn-toggle" (click)="toggleSidebar()" aria-label="Toggle sidebar">
-        <span class="material-icons">
-          {{ isCollapsed ? 'menu_open' : 'menu' }}
-        </span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
 
     <!-- NAV -->
     <nav class="sidebar-nav">
       <a routerLink="/coordinator/dashboard" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">dashboard</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="12" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="2" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="12" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Dashboard</span>
       </a>
 
       <a routerLink="/coordinator/students" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">people</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M5 19v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Estudiantes</span>
       </a>
 
       <a routerLink="/coordinator/reports" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">description</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M5 2h12a2 2 0 0 1 2 2v16l-8-4-8 4V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Reportes</span>
       </a>
 
       <a routerLink="/coordinator/tutors"
    routerLinkActive="active"
    class="nav-item">
-  <span class="material-icons">groups</span>
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <circle cx="7" cy="7" r="3" stroke="currentColor" stroke-width="2"/>
+    <circle cx="15" cy="7" r="3" stroke="currentColor" stroke-width="2"/>
+    <path d="M3 17v-1a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1M12 17v-1a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1" stroke="currentColor" stroke-width="2"/>
+  </svg>
   <span class="nav-text">Tutores</span>
 </a>
 
       <a routerLink="/coordinator/tutor-assignments"
    routerLinkActive="active"
    class="nav-item">
-  <span class="material-icons">assignment_ind</span>
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <rect x="2" y="2" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+    <circle cx="11" cy="8" r="2" stroke="currentColor" stroke-width="2"/>
+    <path d="M7 15v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/>
+  </svg>
   <span class="nav-text">Designación de Tutores</span>
 </a> 
 
@@ -65,7 +83,11 @@ import { AuthService } from '../../../core/services/auth.service';
     <!-- FOOTER -->
     <div class="sidebar-footer">
       <button class="btn-logout" (click)="logout()">
-        <span class="material-icons">logout</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7 16L3 16C2.44772 16 2 15.5523 2 15L2 5C2 4.44772 2.44772 4 3 4L7 4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13 13L18 10L13 7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <span class="nav-text">Cerrar sesión</span>
       </button>
     </div>
@@ -77,7 +99,10 @@ import { AuthService } from '../../../core/services/auth.service';
       <h2>Panel de Coordinador</h2>
 
       <div class="user-info">
-        <span class="material-icons">supervisor_account</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 16c0-2.5 2-4 5-4s5 1.5 5 4" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
         <span>Coordinador de Carrera</span>
       </div>
     </header>
@@ -156,8 +181,8 @@ import { AuthService } from '../../../core/services/auth.service';
   transition: all 0.25s ease;
 }
 
-.nav-item .material-icons {
-  font-size: 22px;
+.nav-item svg {
+  flex-shrink: 0;
 }
 
 .nav-item:hover {

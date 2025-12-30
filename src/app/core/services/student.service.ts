@@ -43,4 +43,8 @@ export class StudentService {
   getMyStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(`${this.apiUrl}/my-students`);
   }
+
+  bulkCreate(students: any[]) {
+  return this.http.post(`${this.apiUrl}/students/bulk`, students);
+}
 }

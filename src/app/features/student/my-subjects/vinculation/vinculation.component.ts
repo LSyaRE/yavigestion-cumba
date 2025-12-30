@@ -13,7 +13,12 @@ import { Vinculation } from '../../../../core/models';
     <div class="vinculation-container">
       <div class="header">
         <div class="header-content">
-          <div class="icon">🤝</div>
+          <div class="icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <path d="M24 20c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h4v-8h-4v-4h4v-4h-4v-4h4v-4h-4z" fill="currentColor"/>
+              <path d="M40 20c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h4v-8h-4v-4h4v-4h-4v-4h4v-4h-4z" fill="currentColor"/>
+            </svg>
+          </div>
           <div>
             <h1>Vinculación con la Comunidad</h1>
             <p>160 horas de servicio comunitario</p>
@@ -23,7 +28,12 @@ import { Vinculation } from '../../../../core/models';
 
       <!-- Información del Proyecto -->
       <div class="info-card">
-        <h2>📋 Información del Proyecto</h2>
+        <h2>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+            <path d="M8 6h10M8 10h10M8 14h10M4 6h.01M4 10h.01M4 14h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Información del Proyecto
+        </h2>
         <div class="info-grid">
           <div class="info-item">
             <span class="label">Horas Requeridas:</span>
@@ -39,7 +49,13 @@ import { Vinculation } from '../../../../core/models';
       <!-- Formulario de Vinculación -->
       <form [formGroup]="vinculationForm" (ngSubmit)="onSubmit()" class="vinculation-form">
         <div class="form-card">
-          <h2>🏢 Datos de la Organización</h2>
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <rect x="3" y="5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 4v2M14 4v2M3 9h14" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Datos de la Organización
+          </h2>
 
           <div class="form-row">
             <div class="form-group full-width">
@@ -136,7 +152,13 @@ import { Vinculation } from '../../../../core/models';
         </div>
 
         <div class="form-card">
-          <h2>📅 Fechas del Proyecto</h2>
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="display: inline; vertical-align: middle; margin-right: 8px;">
+              <rect x="3" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 8h14M7 3v3M13 3v3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Fechas del Proyecto
+          </h2>
 
           <div class="form-row">
             <div class="form-group">
@@ -156,7 +178,11 @@ import { Vinculation } from '../../../../core/models';
             Cancelar
           </button>
           <button type="submit" class="btn btn-primary" [disabled]="vinculationForm.invalid || loading">
-            <span *ngIf="!loading">💾 Guardar Información</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display: inline; vertical-align: middle; margin-right: 6px;" *ngIf="!loading">
+              <rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 3V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1M5 7l2 2 4-4" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span *ngIf="!loading">Guardar Información</span>
             <span *ngIf="loading">Guardando...</span>
           </button>
         </div>
@@ -179,7 +205,7 @@ import { Vinculation } from '../../../../core/models';
         align-items: center;
 
         .icon {
-          font-size: 64px;
+          color: #fbbf24;
         }
 
         h1 {
@@ -209,6 +235,10 @@ import { Vinculation } from '../../../../core/models';
         color: #92400e;
         font-weight: 600;
         margin-bottom: 16px;
+      }
+
+      h2 svg {
+        color: #92400e;
       }
 
       .info-grid {
@@ -260,6 +290,10 @@ import { Vinculation } from '../../../../core/models';
         padding-bottom: 16px;
         border-bottom: 2px solid #f3f4f6;
       }
+
+      h2 svg {
+        color: #1f2937;
+      }
     }
 
     .form-row {
@@ -309,6 +343,11 @@ import { Vinculation } from '../../../../core/models';
       display: flex;
       gap: 12px;
       justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
     }
 
     @media (max-width: 768px) {

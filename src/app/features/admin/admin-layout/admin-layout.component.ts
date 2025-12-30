@@ -23,31 +23,46 @@ import { AuthService } from '../../../core/services/auth.service';
       <span class="logo-text">Yavirac</span>
 
       <button class="btn-toggle" (click)="toggleSidebar()" aria-label="Toggle sidebar">
-        <span class="material-icons">
-          {{ isCollapsed ? 'menu_open' : 'menu' }}
-        </span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
 
     <!-- NAV -->
     <nav class="sidebar-nav">
       <a routerLink="/admin/dashboard" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">dashboard</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="12" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="2" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+          <rect x="12" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Dashboard</span>
       </a>
 
       <a routerLink="/admin/periods" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">event</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M2 9h18M6 2v4M16 2v4" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Periodos</span>
       </a>
 
       <a routerLink="/admin/careers" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">school</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M11 2L2 6L11 10L20 6L11 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 16L11 20L20 16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 11L11 15L20 11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
         <span class="nav-text">Carreras</span>
       </a>
 
       <a routerLink="/admin/users" routerLinkActive="active" class="nav-item">
-        <span class="material-icons">people</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M5 19v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2"/>
+        </svg>
         <span class="nav-text">Usuarios</span>
       </a>
     </nav>
@@ -55,7 +70,11 @@ import { AuthService } from '../../../core/services/auth.service';
     <!-- FOOTER -->
     <div class="sidebar-footer">
       <button class="btn-logout" (click)="logout()">
-        <span class="material-icons">logout</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7 16L3 16C2.44772 16 2 15.5523 2 15L2 5C2 4.44772 2.44772 4 3 4L7 4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13 13L18 10L13 7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <span class="nav-text">Cerrar sesión</span>
       </button>
     </div>
@@ -67,7 +86,10 @@ import { AuthService } from '../../../core/services/auth.service';
       <h2>Panel de Administración</h2>
 
       <div class="user-info">
-        <span class="material-icons">admin_panel_settings</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 6v4M10 13v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <span>Administrador</span>
       </div>
     </header>
@@ -146,8 +168,8 @@ import { AuthService } from '../../../core/services/auth.service';
   transition: all 0.25s ease;
 }
 
-.nav-item .material-icons {
-  font-size: 22px;
+.nav-item svg {
+  flex-shrink: 0;
 }
 
 .nav-item:hover {
