@@ -91,6 +91,7 @@
         type="submit"
         class="btn btn-primary btn-block"
         [disabled]="registerForm.invalid || loading"
+        (click)="onSubmit()"
       >
         <span *ngIf="!loading">Registrarse</span>
         <span *ngIf="loading">Registrando...</span>

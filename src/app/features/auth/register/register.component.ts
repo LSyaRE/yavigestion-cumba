@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -11,24 +11,25 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
-  private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
+export class RegisterComponent implements OnInit {
   private router = inject(Router);
 
-  registerForm: FormGroup;
+  registerForm!: FormGroup;
   loading = false;
   errorMessage = '';
   successMessage = '';
 
-  constructor() {
-    this.registerForm = this.fb.group({
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
+
+  ngOnInit(): void {
+      this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     });
   }
 
+  
   onSubmit(): void {
     if (this.registerForm.invalid) {
       return;
