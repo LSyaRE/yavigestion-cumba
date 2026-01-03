@@ -54,8 +54,8 @@ import { DateFormatPipe } from '../../../../shared/pipes/date-format.pipe';
               </div>
             </div>
 
-            <div class="period-stats" *ngIf="period.careers">
-              <span class="stat-item">🎓 {{ period.careers.length }} carreras</span>
+            <div class="period-stats" >
+              <span class="stat-item">🎓 {{ period.totalCareers }} carreras</span>
             </div>
           </div>
 
@@ -345,7 +345,7 @@ export class PeriodListComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        this.errorMessage = 'Error al cargar los periodos';
+      this.errorMessage = 'Error al cargar los periodos';
         this.loading = false;
         console.error('Error loading periods:', error);
       }
@@ -356,7 +356,7 @@ export class PeriodListComponent implements OnInit {
     if (confirm(`¿Está seguro de eliminar el periodo "${period.name}"?`)) {
       this.periodService.delete(period.id).subscribe({
         next: () => {
-          // La lista se actualiza automáticamente gracias al BehaviorSubject
+          this.periods = this.periods.filter(periodFilt => period.id !== periodFilt.id);
         },
         error: (error) => {
           this.errorMessage = 'Error al eliminar el periodo';

@@ -6,6 +6,7 @@ export interface AcademicPeriod {
   description?: string;
   startDate: Date;
   endDate: Date;
+  totalCareers: number;
   careers?: Career[];
   status: string;
 }

@@ -5,9 +5,7 @@ import { AuthService } from '../services/auth.service';
 export const roleGuard = (allowedRoles: string[]): CanActivateFn => {
   return (route, state) => {
     
-    return true; //borrar
 
-    /* 
     // DESCOMENTAR ESTO CUANDO TENGAS EL BACKEND FUNCIONANDO:
     
     const authService = inject(AuthService);
@@ -20,18 +18,17 @@ export const roleGuard = (allowedRoles: string[]): CanActivateFn => {
       return false;
     }
 
-    const hasRole = user.roles?.some(role => 
-      allowedRoles.some(allowedRole => 
-        role.name.toLowerCase() === allowedRole.toLowerCase()
-      )
-    );
+    // const hasRole = user.roles?.some(role => 
+    //   allowedRoles.some(allowedRole => 
+    //     role.name.toLowerCase() === allowedRole.toLowerCase()
+    //   )
+    // );
 
-    if (hasRole) {
-      return true;
-    }
+    // if (hasRole) {
+    //   return true;
+    // }
 
     router.navigate(['/unauthorized']);
     return false;
-    */
   };
 };

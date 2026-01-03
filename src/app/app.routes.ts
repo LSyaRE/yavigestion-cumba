@@ -14,23 +14,23 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [authGuard, roleGuard(['ROLE_ADMIN', 'admin'])],
+    canActivate: [authGuard, ],
     loadChildren: () => import('./features/admin/admin.routes').then(m => m.ADMIN_ROUTES)
   },
   {
     path: 'coordinator',
-    canActivate: [authGuard, roleGuard(['ROLE_COORDINATOR', 'coordinator'])],
+    canActivate: [authGuard,],
     loadChildren: () => import('./features/coordinator/coordinator.routes')
       .then(m => m.COORDINATOR_ROUTES)
   },
   {
     path: 'tutor',
-    canActivate: [authGuard, roleGuard(['ROLE_TUTOR', 'tutor'])],
+    canActivate: [authGuard],
     loadChildren: () => import('./features/tutor/tutor.routes').then(m => m.TUTOR_ROUTES)
   },
   {
     path: 'student',
-    canActivate: [authGuard, roleGuard(['ROLE_STUDENT', 'student'])],
+    canActivate: [authGuard],
     loadChildren: () => import('./features/student/student.routes')
       .then(m => m.STUDENT_ROUTES)
   },

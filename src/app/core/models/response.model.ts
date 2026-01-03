@@ -1,7 +1,7 @@
 export interface GenericResponse<T> {
   message?: string;
   status: number;
-  data?: T;
+  data: T;
 }
 
 export interface GenericOnlyTextResponse {
@@ -10,9 +10,11 @@ export interface GenericOnlyTextResponse {
 }
 
 export interface PaginatedResponse<T> {
-  content: T[];
+  message: string;
+  status: number;
+  data: T;
   totalPages: number;
-  totalElements: number;
   currentPage: number;
+  totalElements: number;
   pageSize: number;
 }

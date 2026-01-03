@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { StudentService } from '../../../core/services/student.service';
 import { CareerService } from '../../../core/services/career.service';
 import { Student, Career, SubjectType } from '../../../core/models';
+import { StatsService } from '@core/services/stats.service';
 
 interface DashboardStats {
   totalStudents: number;
@@ -631,8 +632,11 @@ interface DashboardStats {
   `]
 })
 export class CoordinatorDashboardComponent implements OnInit {
-  private studentService = inject(StudentService);
-  private careerService = inject(CareerService);
+  
+
+  constructor(private studentService: StudentService, private careerService :CareerService, private statsService: StatsService){ 
+
+  }
 
   students: Student[] = [];
   careers: Career[] = [];

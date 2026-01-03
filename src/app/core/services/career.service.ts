@@ -18,7 +18,8 @@ export class CareerService {
   constructor() {
     // Crear periodos iniciales
     const period1: AcademicPeriod = { 
-      id: this.nextPeriodId++, 
+      id: this.nextPeriodId++,
+      totalCareers: 0 ,
       name: '2025 - Primer Semestre', 
       startDate: new Date('2025-02-01'), 
       endDate: new Date('2025-06-30'), 
@@ -30,6 +31,7 @@ export class CareerService {
       name: '2025 - Segundo Semestre', 
       startDate: new Date('2025-08-01'), 
       endDate: new Date('2025-12-15'), 
+      totalCareers: 10,
       careers: [], 
       status: 'Activo' 
     };

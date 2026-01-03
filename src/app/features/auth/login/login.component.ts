@@ -36,21 +36,6 @@ export class LoginComponent {
 
     this.loading = true;
     this.errorMessage = '';
-
-    const selectedRole = this.loginForm.get('role')?.value;
-    
-    // Simular un token falso para desarrollo
-    localStorage.setItem('token', 'fake-token-for-development');
-    
-    // Esperar un momento para simular la carga
-    setTimeout(() => {
-      this.loading = false;
-      // Redirigir según el rol seleccionado
-      this.redirectByRole(selectedRole);
-    }, 500);
-
-    /* 
-    // DESCOMENTAR ESTO CUANDO TENGAS EL BACKEND FUNCIONANDO
     
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
@@ -67,7 +52,6 @@ export class LoginComponent {
         this.loading = false;
       }
     });
-    */
   }
 
   private redirectByRole(role: string): void {

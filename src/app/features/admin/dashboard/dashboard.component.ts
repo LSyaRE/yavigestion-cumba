@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { PeriodService } from '../../../core/services/period.service';
 import { CareerService } from '../../../core/services/career.service';
 import { UserService } from '../../../core/services/user.service';
+import { StatsService } from '@core/services/stats.service';
 
 interface DashboardStats {
   totalPeriods: number;
@@ -420,9 +421,8 @@ interface DashboardStats {
 `]
 })
 export class AdminDashboardComponent implements OnInit {
-  private periodService = inject(PeriodService);
-  private careerService = inject(CareerService);
-  private userService = inject(UserService);
+  
+  constructor( private statsService: StatsService) {}
 
   loading = true;
   stats: DashboardStats = {
@@ -438,34 +438,18 @@ export class AdminDashboardComponent implements OnInit {
 
   private loadDashboardData(): void {
     this.loading = true;
+    this.statsService.findDashboardStats().subscribe({
+      next: (coordinatorStats) => {
+        this.stats.totalUsers = coordinatorStats.totalUsers;
+        this.stats.totalCareers = coordinatorStats.totalCareers;
+        this.stats.activePeriods = coordinatorStats.totalActivePeriods;
+        this.stats.totalPeriods = coordinatorStats.totalAcademicPeriods;
+        this.loading = false;
 
-    // Cargar periodos
-    this.periodService.getAll().subscribe({
-      next: (periods) => {
-        this.stats.totalPeriods = periods.length;
-        this.stats.activePeriods = periods.filter(p => p.status === 'Activo').length;
       },
       error: (error) => console.error('Error loading periods:', error)
     });
 
-    // Cargar carreras
-    this.careerService.getAll().subscribe({
-      next: (careers) => {
-        this.stats.totalCareers = careers.length;
-      },
-      error: (error) => console.error('Error loading careers:', error)
-    });
 
-    // Cargar usuarios
-    this.userService.getAll().subscribe({
-      next: (users) => {
-        this.stats.totalUsers = users.length;
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Error loading users:', error);
-        this.loading = false;
-      }
-    });
   }
 }

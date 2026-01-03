@@ -17,6 +17,7 @@ export * from './auth.model';
 export * from './response.model';
 export * from './filter.model';
 export * from './constants';
+export * from './dashboard-stats.model'
 
 // Exportar tipos adicionales
 export type { InternshipStatus } from './internship.model';
