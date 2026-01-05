@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { AcademicPeriod, Career, GenericOnlyTextResponse, GenericResponse, PaginatedResponse } from '../models';
+import { AcademicPeriod, Career, CareerPeriod, GenericOnlyTextResponse, GenericResponse, PaginatedResponse } from '../models';
 import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,6 @@ export class PeriodService {
   private careers: Career[] = [];
   private apiUrl = `${environment.apiUrl}/periods`;
 
-  private periods$ = new BehaviorSubject<AcademicPeriod[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +23,10 @@ export class PeriodService {
 
   getById(id: number): Observable<AcademicPeriod> {
     return this.http.get<GenericResponse<AcademicPeriod>>(`${this.apiUrl}/${id}`).pipe(map(listPeriod => listPeriod.data));
+  }
+
+  getCareerByPeriod(id: number): Observable<CareerPeriod> {
+    return this.http.get<GenericResponse<CareerPeriod>>(`${this.apiUrl}/${id}/career`).pipe(map(listPeriod => listPeriod.data));
   }
 
   create(period: Partial<AcademicPeriod>): Observable<GenericOnlyTextResponse> {

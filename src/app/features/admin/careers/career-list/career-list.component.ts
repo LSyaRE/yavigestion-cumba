@@ -33,8 +33,7 @@ import { Career } from '../../../../core/models';
           <div class="career-body">
             <p *ngIf="career.description">{{ career.description }}</p>
             <div class="career-info">
-              <span class="info-badge" *ngIf="career.isDual">🎓 Carrera Dual</span>
-              <span class="info-badge" *ngIf="!career.isDual">📚 Carrera Tradicional</span>
+              <span class="info-badge" >{{careerText(career.isDual)}}</span>
             </div>
           </div>
 
@@ -319,6 +318,14 @@ export class CareerListComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  careerText(type: string) {
+    return {
+      "DUAL": "🎓 Carrera Dual",
+      "TRADITIONAL": "📚 Carrera Tradicional"
+    }[type] ?? "No seleccionado";
+
   }
 
   deleteCareer(career: Career): void {

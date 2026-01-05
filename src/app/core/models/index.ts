@@ -18,6 +18,7 @@ export * from './response.model';
 export * from './filter.model';
 export * from './constants';
 export * from './dashboard-stats.model'
+export * from './career-period.model'
 
 // Exportar tipos adicionales
 export type { InternshipStatus } from './internship.model';

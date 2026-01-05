@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { UserService } from '../../../../core/services/user.service';
-import { User, Role } from '../../../../core/models';
+import { User, Role, PaginatedResponse } from '../../../../core/models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
@@ -58,39 +58,46 @@ import { environment } from '../../../../../environments/environment';
           </div>
         </div>
 
-        <!-- Formulario de Asignación de Roles -->
         <form [formGroup]="rolesForm" (ngSubmit)="onSubmit()" class="roles-form">
           <div class="form-card">
             <h2>🔑 Seleccionar Roles</h2>
             <p class="form-description">Marca los roles que deseas asignar al usuario</p>
 
-            <div class="roles-grid" formArrayName="roles">
-              <div 
-                *ngFor="let roleControl of rolesArray.controls; let i = index" 
-                class="role-checkbox-card"
-                [class.selected]="roleControl.value.selected"
-              >
-                <input
-                  type="checkbox"
-                  [id]="'role-' + i"
-                  [formControlName]="i"
-                  (change)="onRoleChange(i)"
-                  class="role-checkbox"
-                >
-                <label [for]="'role-' + i" class="role-label">
-                  <div class="role-icon">
-                    {{ getRoleIcon(availableRoles[i].name) }}
-                  </div>
-                  <div class="role-info">
-                    <div class="role-name">{{ getRoleName(availableRoles[i].name) }}</div>
-                    <div class="role-description">{{ availableRoles[i].description }}</div>
-                  </div>
-                  <div class="checkmark">
-                    <span *ngIf="roleControl.value.selected">✓</span>
-                  </div>
-                </label>
+          <div class="roles-grid" formArrayName="roles">
+          <div
+            *ngFor="let roleControl of rolesArray.controls; let i = index"
+            [formGroupName]="i"
+            class="role-checkbox-card"
+            [class.selected]="roleControl.get('selected')?.value"
+          >
+            <input
+              type="checkbox"
+              class="role-checkbox"
+              formControlName="selected"
+              [id]="'role-' + i"
+            >
+
+            <label [for]="'role-' + i" class="role-label">
+              <div class="role-icon">
+                {{ getRoleIcon(availableRoles[i].name) }}
               </div>
-            </div>
+
+              <div class="role-info">
+                <div class="role-name">
+                  {{ getRoleName(availableRoles[i].name) }}
+                </div>
+                <div class="role-description">
+                  {{ availableRoles[i].description }}
+                </div>
+              </div>
+
+              <div class="checkmark">
+                <span *ngIf="roleControl.get('selected')?.value">✓</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
 
             <div class="info-box">
               <h3>ℹ️ Información sobre Roles</h3>
@@ -544,9 +551,9 @@ export class AssignRolesComponent implements OnInit {
 
   private loadAvailableRoles(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.http.get<Role[]>(`${environment.apiUrl}/admin/roles`).subscribe({
+      this.http.get<PaginatedResponse<Role[]>>(`${environment.apiUrl}/admin/roles`).subscribe({
         next: (roles) => {
-          this.availableRoles = roles;
+          this.availableRoles = roles.data;
           resolve();
         },
         error: reject
@@ -566,11 +573,6 @@ export class AssignRolesComponent implements OnInit {
     });
   }
 
-  onRoleChange(index: number): void {
-    const roleControl = this.rolesArray.at(index);
-    const currentValue = roleControl.get('selected')?.value;
-    roleControl.patchValue({ selected: !currentValue });
-  }
 
   hasSelectedRoles(): boolean {
     return this.rolesArray.controls.some(control => control.get('selected')?.value);

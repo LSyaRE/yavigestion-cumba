@@ -50,8 +50,8 @@ import { Career, AcademicPeriod } from '../../../../core/models';
               <select id="isDual" formControlName="isDual" class="form-control"
                       [class.is-invalid]="isDual?.invalid && isDual?.touched">
                 <option value="">Seleccione el tipo</option>
-                <option [value]="true">Carrera Dual</option>
-                <option [value]="false">Carrera Tradicional</option>
+                <option value="DUAL">Carrera Dual</option>
+                <option value="TRADITIONAL">Carrera Tradicional</option>
               </select>
               <div class="invalid-feedback" *ngIf="isDual?.invalid && isDual?.touched">
                 <span *ngIf="isDual?.errors?.['required']">El tipo es requerido</span>
@@ -72,22 +72,6 @@ import { Career, AcademicPeriod } from '../../../../core/models';
             </div>
           </div>
 
-          <!-- Periodo Académico -->
-          <div class="form-row">
-            <div class="form-group full-width">
-              <label for="period">Periodo Académico *</label>
-              <select id="period" formControlName="periodId" class="form-control"
-                      [class.is-invalid]="periodId?.invalid && periodId?.touched">
-                <option value="">Seleccione un periodo</option>
-                <option *ngFor="let p of periods" [value]="p.id">
-                  {{ p.name }} ({{ p.startDate | date:'dd/MM/yyyy' }} - {{ p.endDate | date:'dd/MM/yyyy' }})
-                </option>
-              </select>
-              <div class="invalid-feedback" *ngIf="periodId?.invalid && periodId?.touched">
-                El periodo es requerido
-              </div>
-            </div>
-          </div>
 
           <!-- Info Box -->
           <div class="info-box">
@@ -328,8 +312,7 @@ export class CareerFormComponent implements OnInit {
       name: ['', Validators.required],
       description: [''],
       isDual: ['', Validators.required],
-      status: ['Activo', Validators.required],
-      periodId: [null, Validators.required]
+      status: ['Activo', Validators.required]
     });
   }
 
@@ -358,7 +341,6 @@ export class CareerFormComponent implements OnInit {
           description: career.description,
           isDual: career.isDual,
           status: career.status,
-          periodId: career.periodId
         });
         this.loading = false;
       },

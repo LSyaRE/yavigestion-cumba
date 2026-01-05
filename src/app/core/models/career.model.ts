@@ -7,5 +7,5 @@ export interface Career {
   description?: string;
   academicPeriod?: AcademicPeriod; // singular
   status: string;
-  isDual?: boolean;
+  isDual: string;
 }

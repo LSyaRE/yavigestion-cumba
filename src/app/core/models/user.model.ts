@@ -4,8 +4,8 @@ import { Person } from './person.model';
 export interface User {
   id: number;
   email: string;
-  passwordHash?: string;
   createdAt?: Date;
+  password: string;
   roles?: Role[];
   person?: Person;
   status: string;

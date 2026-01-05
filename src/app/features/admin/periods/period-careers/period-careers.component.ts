@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PeriodService } from '../../../../core/services/period.service';
-import { AcademicPeriod, Career } from '../../../../core/models';
+import { AcademicPeriod, Career, CareerPeriod } from '../../../../core/models';
 
 @Component({
   selector: 'app-period-careers',
@@ -233,7 +233,7 @@ export class PeriodCareersComponent implements OnInit {
   private periodService = inject(PeriodService);
   private route = inject(ActivatedRoute);
 
-  period?: AcademicPeriod;
+  period?: CareerPeriod;
   careers: Career[] = [];
   loading = true;
   errorMessage = '';
@@ -253,34 +253,29 @@ export class PeriodCareersComponent implements OnInit {
     this.errorMessage = '';
 
     // Cargar periodo
-    this.periodService.getById(this.periodId!).subscribe({
-      next: (period) => this.period = period,
+    this.periodService.getCareerByPeriod(this.periodId!).subscribe({
+      next: (period) => {
+        this.period = period
+        this.careers = period?.careers;
+        this.loading = false;
+      },
       error: (error) => {
         this.errorMessage = 'Error al cargar el periodo';
         console.error(error);
       }
     });
 
-    // Cargar carreras del periodo
-    this.periodService.getCareers(this.periodId!).subscribe({
-      next: (careers) => {
-        this.careers = careers;
-        this.loading = false;
-      },
-      error: (error) => {
-        this.errorMessage = 'Error al cargar las carreras';
-        this.loading = false;
-        console.error(error);
-      }
-    });
+
+
+
   }
 
   getDualCareersCount(): number {
-    return this.careers.filter(c => c.isDual).length;
+    return this.period?.totalDual ?? 0;
   }
 
   getTraditionalCareersCount(): number {
-    return this.careers.filter(c => !c.isDual).length;
+    return this.period?.totalTraditional ?? 0;
   }
 
   getActiveCareersCount(): number {
