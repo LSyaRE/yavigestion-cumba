@@ -41,6 +41,10 @@ export class PeriodService {
     return this.http.delete<GenericOnlyTextResponse>(`${this.apiUrl}/${id}`);
   }
 
+  assignCareersToPeriod(periodId: number, careers: number[]): Observable<GenericOnlyTextResponse> {
+    return this.http.put<GenericOnlyTextResponse>(`${this.apiUrl}/${periodId}/assignCareer`, { careerIds: careers }); 
+  }
+
   // ================= CARRERAS =================
   getCareers(periodId: number): Observable<Career[]> {
     
