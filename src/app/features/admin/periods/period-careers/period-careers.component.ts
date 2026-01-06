@@ -1334,6 +1334,6 @@ import { CareerService } from '@core/services/career.service';
     }
   
     getActiveCareersCount(): number {
-      return this.careers.filter(c => c.status === 'Activo').length;
+      return this.period?.totalActiveCareers ?? 0;
     }
   }

@@ -10,5 +10,6 @@ export interface CareerPeriod {
   totalCareers: number;
   careers: Career[];
   totalTraditional: number;
+  totalActiveCareers: number;
   totalDual: number;
 }
