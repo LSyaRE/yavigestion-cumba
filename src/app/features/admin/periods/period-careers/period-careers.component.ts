@@ -1113,6 +1113,102 @@ import { CareerService } from '@core/services/career.service';
     color: #92400e;        /* brown text */
   }
   .career-icon .icon-book::before { content: '📘'; }
+  .stats-section {
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 22px rgba(2,6,23,0.06);
+      margin-top: 20px;
+    }
+    .stats-section h2 {
+      margin: 0 0 12px 0;
+      font-weight: 800;
+      letter-spacing: .02em;
+      background: linear-gradient(90deg, #0ea5e9, #a78bfa, #f59e0b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 12px 24px rgba(2,6,23,0.08);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      position: relative;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 14px;
+      opacity: 0;
+      transition: opacity .2s ease;
+      background: linear-gradient(135deg, #93c5fd, #c4b5fd, #fcd34d);
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(2,6,23,0.12);
+      border-color: transparent;
+    }
+    .stat-card:hover::after { opacity: .30; }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+      font-size: 22px; /* emoji fallback size */
+      flex: 0 0 auto;
+    }
+
+    /* Per-card color themes */
+    .stat-card:nth-child(1) .stat-icon { background: #e0f2fe; color: #1e40af; } /* Duales */
+    .stat-card:nth-child(2) .stat-icon { background: #fef3c7; color: #92400e; } /* Tradicionales */
+    .stat-card:nth-child(3) .stat-icon { background: #d1fae5; color: #065f46; } /* Activas */
+    .stat-card:nth-child(4) .stat-icon { background: #ede9fe; color: #6b21a8; } /* Total */
+
+    .stat-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat-label {
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: .02em;
+      line-height: 1.1;
+    }
+    .stat-description {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+  
 
 
 
